@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SurfKart</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .right-menu > li {
+        display: inline-block;
+        margin-top: 30px;
+      }
+      .right-menu > li > .fa {
+        font-size: 2em;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+      .navbar-brand {
+        left:50%;
+        top: 40px;
+        transform:translate(-50%,-50%);
+        position:absolute;
+      }
+      .navbar-brand > img {
+        width:150px;
+      }
+      .header {
+        background: #f5f6fc;
+        margin-bottom: 80px;
+      }
+      .navbar-brand {
+        padding: 0px 35px;
+      }
+      .navbar-toggler {
+        margin-top:30px;
+        padding: 0;
+        border:none;
+        outline:none;
+      }
+      .navbar-toggler > .fa {
+        font-size: 30px;
+      }
+      .banner {
+        position:relative;
+      }
+      .banner-img {
+        margin: 80px 115px;
+        width:60%;
+      }
+      .banner-img > img {
+        width: 100%;
+        margin-bottom:-80px;
+      }
+      .banner-title {
+        position: absolute;
+        left:50%;
+        top:20%;
+      }
+      .banner-title > h1 {
+        font-size: 55px;
+        background: rgba(0,0,0,0.75);
+        color:#fff;
+        line-height: 70px;
+        padding:0px 10px 0 10px; 
+      }
+
+     /* fashion trends */
+
+     .fashion-trends {
+       padding:100px 0px;
+     }
+     .fashion-trends > fashion-box {
+       margin:80px 0;
+     }
+     .title-style > h1 {
+      padding:40px 0;
+    }
+     /* box-shadow */
+    .title-style {
+      margin:0 auto 80px;
+      height:120px;
+      width:80%;
+      max-width:700px;
+      background: #fff;
+      position:relative;
+      box-shadow: 0 4px 5px 0 rgba(0,0,50,0.5);
+    }
+    /* css border-decoration */
+    .title-style::after {
+      content: '';
+      height:100px;
+      width:200px;
+      background-color:#f992a6;
+      position:absolute;
+      top:-10px;
+      left:-10px;
+      z-index:-1;
+    }
+    .title-style::before {
+      content: '';
+      height:100px;
+      width:200px;
+      background-color:#f992a6;
+      position:absolute;
+      bottom:-10px;
+      right:-10px;
+      z-index:-1;
+    }
+    
+    /* card */
+    .trending-img {
+      position:relative;
+      margin-bottom:15px;
+    }
+    .trending-img > img {
+      width:100%;
+    }
+
+    /*button*/
+    .btn {
+      position: absolute;
+      padding:10px 0;
+      outline:none;
+      width:150px;
+      border:0;
+      border-radius:2px;
+      background: #fff;
+      left:50%;
+      bottom:0;
+      transform:translate(-50%,0);
+      transition:0.5s;
+      z-index: 1;
+    }
+
+    .trending-img:hover > .btn {
+      transform:translate(-50%,-50%);
+      bottom:50%;
+      opacity:1;
+    }
+
+    .overlay {
+      height:0;
+      width:100%;
+      position:absolute;
+      top:0;
+      background: #333;
+      opacity:0;
+      transition:0.5s;
+    }
+
+    .trending-img:hover > .overlay {
+      opacity:0.5;
+      height:100%
+    } 
+
+    /* offer */
+    .offer {
+      background-image: url(images/img-surfkart/offer-bg.jpg);
+      background-size:cover;
+      background-position:center;
+    }
+    .offer > .row {
+      margin:initial;
+    }
+
+    .subscribe {
+      max-width:500px;
+      margin-top:80px;
+      padding:60px;
+      background:#ffffff8c;
+      margin-bottom:20px;
+    }
+    .subscribe > a {
+      width:100px;
+      display:block;
+      color:white;
+      background:black;
+      border-radius: 20px;
+      text-decoration: none;
+      padding: 5px;
+      text-align: center;
+    }
+    .offer img {
+     
+      width:300px;
+      height:450px;
+      margin:-100px;
+      margin-top:150px;
+
+    }
+
+    /*latest-blog*/
+
+    .fashion-blog {
+      margin-top:250px;
+      
+    }
+    .blog-img {
+      margin-top:50px;
+      height: 400px;
+      width:300px;
+      display:inline-blog;
+    }
+    .blog-img > img {
+      width:100%;
+      height: 100%;
+    }
+    h5 {
+      font-size: 1.5em;
+      font-weight: bold; 
+      margin-left:30px;
+    }
+
+    /* Fashion brands */
+    .fashion-brand {
+      margin-top:150px;
+    }
+    .brand-logo {
+      width:200px;
+      height:200px;
+      background:#fff;
+      border-radius: 50%;
+      margin:50px auto 30px;
+      box-shadow: 0 2px 40px 0 rgba(110,130,208,1);
+    }
+    .brand-logo > img {
+      width:150px;
+      margin:60px 20px;
+    }
+ /*payment-Gateway*/
+    .footer {
+      margin-top:150px;
+
+    }
+    .payment{
+      height:400px;
+      width:500px;
+    }
+    .payment > img {
+
+      cursor: pointer;
+      width:100%;
+      height: 100%;
+
+    }
+
+    /*footer*/
+    .jumbotron {
+      margin:100px 0px 0px 0px;
+    }
+
+    /*mobile View*/
+    @media only screen and (max-width:900px)
+    {
+      .banner-img {
+        margin: 40px auto;
+        width:80%;
+      }
+      .banner-title{
+        top:150px;
+        left:50%;
+        transform: translate(-50%,-50%);
+
+      }
+      .banner-title h1 {
+        font-size:16px;
+        padding:5px;
+        line-height: 20px;
+      }
+      .title-style > h1 {
+        font-size: 20px;
+      }
+      .offer  img {
+        margin-bottom:0 ;
+      }
+      .payment  {
+        height:200px;
+        width:300px;
+      }
+    } 
+    </style>
+  </head>
+  <body>
+    <section class="header">
+      <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#"><img src="images/img-surfkart/logo.png" alt=""></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#trends">TRENDS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#offers">OFFERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#blogs">BLOG</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#brands">BRAND</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#payments">PAYMENT</a>
+            </li>
+          </ul>
+
+          <ul class="right-menu ml-auto">
+            <li>
+              <i class="fa fa-facebook"></i>
+            </li>
+            <li>
+              <i class="fa fa-instagram"></i>
+            </li>
+            <li>
+              <i class="fa fa-pinterest"></i>
+            </li>
+            <li>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="banner">
+        <div class="banner-img">
+          <img src="images/img-surfkart/banner-img.jpg" alt="">
+        </div>
+        <div class="banner-title">
+          <h1>FASHION STORY</h1>
+          <h1>WOMEN'S World</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- fashion trends -->
+    <section class="fashion-trends" id="trends">
+      <div class="container">
+        <div class="fashion-box">
+          <div class="title-style text-center">
+          <h1>FASHION TRENDS</h1>
+        </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur dolorum iste, dignissimos neque necessitatibus quam voluptatibus adipisci error laudantium corporis.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur dolorum iste, dignissimos neque necessitatibus quam voluptatibus adipisci error laudantium corpoLorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur dolorum iste, dignissimos neque necessitatibus quam voluptatibus adipisci error laudantium corporis.ris.</p>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="trending-img">
+              <img src="images/img-surfkart/trending-img1.jpg" alt="">
+              <button class="btn">Buy Now</button>
+              <div class="overlay"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="trending-img">
+                  <img src="images/img-surfkart/trending-img2.jpg" alt="">
+                  <button class="btn">Buy Now</button>
+                  <div class="overlay"></div>
+                </div>
+          </div>
+          <div class="col-md-4">
+              <div class="trending-img">
+                  <img src="images/img-surfkart/trending-img3.jpg" alt="">
+                  <button class="btn">Buy Now</button>
+                  <div class="overlay"></div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- offers -->
+    <div class="title-style text-center">
+        <h1>EXCLUSIVE OFFERS</h1>
+      </div>
+    <section class="offer" id="offers">
+      
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                  <img src="images/img-surfkart/offer-img.jpg" alt="">
+                </div>
+                <div class="col-md-6">
+                  <div class="subscribe">
+                    <h4>EXCLUSIVE OFFERS</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nostrum ut reprehenderit temporibus itaque odit aliquam molestias doloribus consequuntur consectetur iste neque unde eum incidunt dolores ducimus, ea soluta praesentium aspernatur voluptate perferendis! At id harum illum numquam? Voluptates totam, incidunt nobis cupiditate earum debitis unde tempore voluptas culpa itaque.</p>
+                    <a href="">Subscripe</a>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <!-- latest blogs -->
+
+    <section class="fashion-blog " id="blogs">
+      <div class="title-style text-center">
+        <h1>LATEST BLOGS</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="blog-img ">
+              <img src="images/img-surfkart/blog-img.jpg" alt="">
+            </div>
+            <h5>TRENDING 50% off</h5>
+          </div>
+          <div class="col-md-4">
+              <div class="blog-img">
+                  <img src="images/img-surfkart/blog-img1.jpeg" alt="">
+                </div>
+                <h5>TRENDING 50% off</h5>
+          </div>
+          <div class="col-md-4">
+              <div class="blog-img">
+                  <img src="images/img-surfkart/blog-img2.jpg" alt="">
+                </div>
+                <h5>TRENDING 50% off</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- fashion brands -->
+    <section class="fashion-brand" id="brands">
+      <div class="title-style text-center">
+          <h1>FASHION BRANDS</h1>
+        </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="brand-logo">
+            <img src="images/img-surfkart/brand-img.png" alt="">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="brand-logo">
+            <img src="images/img-surfkart/brand-img3.jpeg" alt="">
+          </div>
+        </div>
+        <div class="col-md-3"> <div class="brand-logo">
+          <img src="images/img-surfkart/brand-img5.jpeg" alt="">
+        </div></div>
+        <div class="col-md-3">
+          <div class="brand-logo">
+            <img src="images/img-surfkart/brand-img6.jpeg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- footer -->
+  <section class="footer" id="payments">
+      <div class="title-style text-center">
+          <h1>PAYMENT GATEWAY</h1>
+        </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+         <div class="payment">
+          <img src="images/img-surfkart/payment-img.png" alt="">
+         </div>
+        </div>
+        <div class="col-md-6">
+            <div class="payment">
+                <img src="images/img-surfkart/payment-img1.jpeg" alt="">
+               </div>
+        </div>
+       
+      </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="row">
+            <div class="col-md-6 py-5 text-center" >
+              <h5>Designed by <i class="fa fa-github"></i>  Happiiiii</h5>
+            </div>
+            <div class="col-md-6 ">
+              <ul class="right-menu text-center">
+                <li><i class="fa fa-facebook"></i></li>
+                <li><i class="fa fa-instagram"></i></li>
+                <li><i class="fa fa-twitter"></i></li>
+                <li><i class="fa fa-github"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+
+  </section>
+  </body>
+</html>
